@@ -9,7 +9,6 @@ public class Veiculo {
     private String modelo;
     private String descricao;
 
-
     public Veiculo(Integer id, String tipo, String marca, Integer ano, String modelo, String descricao) {
         this.id = id;
         this.tipo=tipo;

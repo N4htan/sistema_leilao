@@ -16,14 +16,9 @@ public class LeilaoApp {
     public static void main(String[] args) {
         LeilaoModel model = new LeilaoModel();
 
-
-
-        @SuppressWarnings("unused")
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         int resposta;
 
-
-        //Menu *INTERFACE GUI*
         do {
             resposta = Integer.parseInt(JOptionPane.showInputDialog("Informe uma Operaçao:"
                     + "\n\n1 - Cadastro de Cliente"
@@ -47,9 +42,7 @@ public class LeilaoApp {
                     + "\n19 - Atualizar dados da Instituiçao"
                     + "\n20 - Atualizar dados de Imovel"
                     + "\n21 - Atualizar dados de Veiculo"
-
                     + "\n\n22 - Sair"));
-
 
             switch(resposta){
                 case 1 :

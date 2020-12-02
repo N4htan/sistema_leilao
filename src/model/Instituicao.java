@@ -6,13 +6,11 @@ public class Instituicao {
     private String nome;
     private String endereco;
 
-
     public Instituicao(String cnpj, String nome, String endereco) {
         this.cnpj = cnpj;
         this.nome = nome;
         this.endereco = endereco;
     }
-
 
     public String getCnpj() {
         return cnpj;

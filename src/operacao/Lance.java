@@ -1,9 +1,9 @@
 package operacao;
 
-
 import model.Cliente;
 
 public class Lance {
+
     private long id;
     private Float valor;
     private Cliente cliente;
@@ -14,9 +14,6 @@ public class Lance {
         this.cliente = cliente;
         this.leilao = leilao;
     }
-
-
-
 
     public Float getValor() {
         return valor;
@@ -42,27 +39,11 @@ public class Lance {
         this.id = id;
     }
 
-
-
-
     public Leilao getLeilao() {
         return leilao;
     }
 
-
-
-
     public void setLeilao(Leilao leilao) {
         this.leilao = leilao;
     }
-
-
-
-
-	/*public Integer getNumLeilao() {
-		return numLeilao;
-	}
-	public void setNumLeilao(Integer numLeilao) {
-		this.numLeilao = numLeilao;
-	} */
 }

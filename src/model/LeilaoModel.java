@@ -11,29 +11,12 @@ import java.util.Scanner;
 
 public class LeilaoModel {
 
-    //INSTANCIANFO VARIÁVEIS DO TIPO SCANNER PARA LER AS ENTRADAS DO USUÁRIO E ARMAZENAR NAS VARIÁVEIS DEFINIDAS ABAIXO
     private Scanner le;
 
+    private String nome, senha, cpf, cnpj, registro, endereco, descricao,  marca, modelo, tipo, email;
 
-
-
-    // DEFININDO VARIÁVEIS UTILIZADAS NOS MÉTODOS
-    private String nome, senha, cpf, cnpj, registro, endereco, descricao,  marca, modelo, tipo,
-            email;
-    //private Date data;
     private Integer numLeilao, qtde, id, ano;
 
-
-
-
-	/* Instanciando enuns
-	TipoVeiculo tipoVeic;
-	TipoImovel tipoImovel;*/
-
-
-
-
-    //INSTANCIANDO AS CLASSES (LISTAS)
     private static List<Cliente> clientes;
     private static List<Imovel> imoveis;
     private static List<Veiculo> veiculos;
@@ -41,12 +24,6 @@ public class LeilaoModel {
     static List<Leilao> leiloes;
     static List<Lance> lances;
 
-
-
-
-
-
-    //CRIANDO ARRAYLISTS DAS LISTAS INSTANCIADAS
     public LeilaoModel() {
         clientes = new ArrayList<>();
         imoveis = new ArrayList<>();
@@ -54,18 +31,8 @@ public class LeilaoModel {
         leiloes = new ArrayList<>();
         veiculos = new ArrayList<>();
         lances = new ArrayList<>();
-        //produtos = new ArrayList<>();
-
         le = new Scanner(System.in);
-
-
     }
-
-
-
-
-    //FUNÇÕES DE INSERÇÃO
-
 
     public void darLances() {
         System.out.println("Insira seu CPF: ");
@@ -76,7 +43,6 @@ public class LeilaoModel {
                 System.out.println("model.Cliente não encontrado!");
                 break;
             }
-            // cliente = le.next();
             System.out.println("Insira o número do Leilão: ");
             numLeilao = le.nextInt();
 
@@ -90,15 +56,9 @@ public class LeilaoModel {
                     System.out.println("Leilão não encontrado!");
                     break;
                 }
-
             }
-
-
         }
-
-
     }
-
 
     public void inserirCliente() {
 
@@ -113,7 +73,7 @@ public class LeilaoModel {
 
         clientes.add(new Cliente(nome, email, senha, cpf));
 
-        System.out.println("Cadastrado!!!");
+        System.out.println("Cadastrado!");
     }
 
     public void inserirImovel() {
@@ -123,13 +83,12 @@ public class LeilaoModel {
         registro = le.next();
         System.out.println("Endereço: ");
         endereco = le.next();
-        System.out.println("Digite um tipo do Imóvel:");
-        System.out.println("\nApartamento, Terreno, Casa, Edifício Comercial");
+        System.out.println("Escolha Imóvel: \nApartamento, Terreno, Casa, Edifício Comercial");
         tipo = le.next();
         if(tipo.equals("Apartamento")||tipo.equals("Terreno")||tipo.equals("Casa")||tipo.equals("Edifício Comercial")||tipo.equals("Edificio Comercial")
                 ||tipo.equals("apartamento")||tipo.equals("terreno")||tipo.equals("casa")||tipo.equals("edifício comercial")||tipo.equals("edificio comercial")) {
             System.out.println("Descrição: ");
-            descricao = le.nextLine();
+            descricao = le.next();
         }else {
             System.out.println("Tipo de imóvel não encontrado");
         }
@@ -139,16 +98,14 @@ public class LeilaoModel {
 
     public void inserirVeiculo() {
 
-
-        System.out.println("Digite uma das opções referente ao tipo do Veículo:");
-        System.out.println("\nCarro, Motocicleta, Bicicleta, Patinete, Skate");
+        System.out.println("Digite um tipo do Veículo:");
+        System.out.println("\nCarro, Motocicleta");
         tipo = le.next();
         System.out.println("Id: ");
         id = le.nextInt();
 
-
-        if(tipo.equals("Carro")||tipo.equals("Motocicleta")||tipo.equals("Bicicleta")||tipo.equals("Patinete")||tipo.equals("Skate")
-                ||tipo.equals("carro")||tipo.equals("motocicleta")||tipo.equals("bicicleta")||tipo.equals("patinete")||tipo.equals("skate") ) {
+        if(tipo.equals("Carro")||tipo.equals("Motocicleta")
+                ||tipo.equals("carro")||tipo.equals("motocicleta") ) {
             System.out.println("Ano: ");
             ano = le.nextInt();
             System.out.println("Marca: ");
@@ -163,14 +120,9 @@ public class LeilaoModel {
 
         }else {
             System.out.println("Tipo de Veículo não encontrado");
-
         }
-
         veiculos.add(new Veiculo( id, tipo, marca, ano, modelo, descricao));
-
     }
-
-
 
     public void inserirInstituicao() {
         System.out.println("CNPJ: ");
@@ -181,10 +133,8 @@ public class LeilaoModel {
         endereco = le.nextLine();
 
         instFinanceiras.add(new Instituicao(cnpj, nome, endereco));
-        System.out.println("Item Cadastrado");
+        System.out.println("Cadastrado!");
     }
-
-
 
     public void inserirLeilao() {
         System.out.println("Numero do Leilao: ");
@@ -195,17 +145,10 @@ public class LeilaoModel {
         for (Instituicao instituicaoFinanceira : instFinanceiras) {
             if (!cnpj.equals(instituicaoFinanceira.getCnpj())) {
                 System.out.println("Instituição Financeira não encontrada!");
-
             }
-
         }
-
         leiloes.add(new Leilao(numLeilao, cnpj, endereco));
-
     }
-
-    //FUNÇÕES DE ALTERAÇÃO
-
 
     public void alterarCliente() {
         System.out.println("CPF do Cliente: ");
@@ -228,11 +171,10 @@ public class LeilaoModel {
 
                 System.out.println("Dados atualizados com sucesso!");
             }else {
-                System.out.println("model.Cliente não encontrado");
+                System.out.println("Cliente não encontrado");
             }
         }
     }
-
 
     public void alterarInstFin() {
         System.out.println("Insira o CNPJ da instituição: ");
@@ -254,7 +196,6 @@ public class LeilaoModel {
         }
     }
 
-
     public void alterarImovel() {
         System.out.println("Insira o registro do Imóvel: ");
         registro = le.nextLine();
@@ -271,7 +212,6 @@ public class LeilaoModel {
             }
         }
     }
-
 
     public void alterarVeiculo() {
         System.out.println("Insira o id do Veículo: ");
@@ -299,19 +239,12 @@ public class LeilaoModel {
         }
     }
 
-
-
-    //FUNÇÕES DE IMPRESSÃO
-
     public void imprimirCliente() {
         for (Cliente Cliente : clientes) {
             System.out.println(
                     " | Nome: " + Cliente.getNome() + "  \t| Certificado Digital: " + Cliente.getCpf());
         }
-
     }
-
-
 
     public void imprimirImoveis() {
         for (Imovel Imovel : imoveis) {
@@ -320,16 +253,12 @@ public class LeilaoModel {
         }
     }
 
-
-
     public void imprimirVeiculos() {
         for (Veiculo veiculo : veiculos) {
             System.out.println("ID: " + veiculo.getId() + " | Marca: " + veiculo.getMarca() + "  \t| Ano: "
                     + veiculo.getAno() + "  \t| Modelo: " + veiculo.getModelo());
         }
     }
-
-
 
     public void imprimirInstFin() {
         for (Instituicao instituicaoFinanceira : instFinanceiras) {
@@ -338,15 +267,12 @@ public class LeilaoModel {
         }
     }
 
-
-
     public void imprimirLeiloes() {
         for (Leilao leilao : leiloes) {
             System.out.println("Número do leilão: " + leilao.getNumeroLeilao() + " \t| Instituição Financeira: " + leilao.getInstFin() + "  \t| Data: " + leilao.getData()
                     + "  \t| Endereço: " + leilao.getEndereco());
         }
     }
-
 
     public void imprimirLances() {
 
@@ -364,7 +290,6 @@ public class LeilaoModel {
         }
     }
 
-    //FUNÇÕES DE REMOÇÃO
     public void removerCliente() {
 
         System.out.println("Insira o certificado digital: ");
@@ -377,8 +302,6 @@ public class LeilaoModel {
         }
         System.out.println("Removido!!!");
     }
-
-
 
     public void removerImovel() {
 
@@ -393,8 +316,6 @@ public class LeilaoModel {
         System.out.println("Removido!!!");
     }
 
-
-
     public void removerVeiculo() {
 
         System.out.println("Insira o ID: ");
@@ -408,8 +329,6 @@ public class LeilaoModel {
         System.out.println("Removido!!!");
     }
 
-
-
     public void removerInstFin() {
 
         System.out.println("Insira o CNPJ: ");
@@ -422,8 +341,6 @@ public class LeilaoModel {
         }
         System.out.println("Removido!!!");
     }
-
-
 
     public void removerLeilao() {
 
